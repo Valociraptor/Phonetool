@@ -17,7 +17,7 @@
             $(this).removeClass("hover");
         });
         $('#avatar img').click(function(){
-            $('#default_avatar input').attr('id', $(this).attr('id'));
+            $('#default_avatar input').attr('value', $(this).attr('id'));
         });
         // var $this = $(this);
         $('#avatar img').click(function(){
@@ -31,7 +31,12 @@
     });
     </script>
     <style>
-
+    body{
+        background-image: url("/static/awards/img/seattle_blur.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
     #avatar img{
         height: 70px;
         width: 70px;
@@ -45,18 +50,34 @@
     h1{
         font-family: Georgia, 'Times New Roman', Times, serif;
     }
+    #register_wrapper input{
+        float: right;
+        clear: both;
+    }
+    textarea{
+        float: right;
+        clear: both;
+    }
+    
+   #register_wrapper{
+        background: white;
+        opacity: 0.8;
+        padding: 10%;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 1px 1px 20px 5px #a8a7a7 ;
+        margin-top: 10%;
+    }
+
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <div class="twelve columns">
-            <h1>Register</h1>
-        </div>
-    </div>
+    
     <div class = "row">
         <div class="one-half column">
             <div id="register_wrapper">
+                <h1>REGISTER</h1>
                 <form action="/register" method="POST">
                     {% csrf_token %}
                     <p>Name: <input type="text" name="name"></p>
@@ -64,7 +85,7 @@
                     <p>Email: <input type="email" name="email"></p>
                     <p>Job Title: <input type="text" name="position"></p>
                     <div id="default_avatar">
-                        <p>Select an avatar: <input type="hidden" name="avatar" id="0">
+                        <p>Select an avatar: <input type="hidden" name="avatar" value="0">
                     </div>
                     <div id="avatar">
                         <img id="1" src="{% static 'awards/img/avatar1.png' %}">
@@ -78,10 +99,10 @@
                     <!-- <input type="file" name="fileupload" value="fileupload" id="fileupload"> <label for="fileupload"> Select a file to upload</label> <br><input type="image" src="/wp-content/uploads/sendform.png" alt="Submit" width="100">
                     
                     Read more: https://html.com/input-type-image/#ixzz4ycW698xg -->
-                    <p>Bio: <textarea name="bio" id="user_bio" cols="30" rows="10"></textarea></p>
-                    <p>Password: <input type="text" name="password"></p>
-                    <p id="criteria">Password must be at least 8 characters and contain at least 1 number</p>
-                    <p>Confirm Password: <input type="text" name="cpassword"></p>
+                    <p>Bio: <textarea name="bio" id="user_bio" cols="30" rows="10"></textarea></p><br><br>
+                    <p>Password: <input type="password" name="password">(must be at least 8 characters) </p>
+                    <p id="criteria"></p>
+                    <p>Confirm Password: <input type="password" name="cpassword"></p>
                     {% if messages %}
                     <div class="messages">
                         {% for message in messages %}

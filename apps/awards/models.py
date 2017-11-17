@@ -12,11 +12,10 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
 
 class UserManager(models.Manager):
     def validate(self, POST):
-        print "111111111"
+
         errors = []
         try:
             new_user = User.objects.get(email = POST['email'])
-            print "222222222"
         except:
         
             if len(POST['name']) < 2:
@@ -41,7 +40,7 @@ class UserManager(models.Manager):
                     avatar = POST['avatar'],
                     password =  bcrypt.hashpw(POST['password'].encode(), bcrypt.gensalt())
                 )
-                print "33333333333333"
+            
                 return (True, new_user)
 
         errors.append("This user already exists!")
@@ -92,7 +91,7 @@ class AwardManager(models.Manager):
 class Award(models.Model):
     name = models.CharField(max_length=255)
     desc = models.CharField(max_length=255)
-    magicability = models.CharField(max_length=255)
+    magicability = models.CharField(max_length=255) 
     picture_id = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

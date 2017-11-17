@@ -12,7 +12,7 @@
     
 </head>
 <body class="{{request.session.magic3}}">
-    <div class="container {{request.session.magic1}} {{request.session.magic6}}">
+    <div class="container {{request.session.magic1}} {{request.session.magic6}} {{request.session.magic3}}">
         <div class="row">
             <div id="header" class="twelve columns">
                 <h2>Phone Time Fun Tool Happy Award Explosion Achievement Recognition Party Wall!</h2>
@@ -23,13 +23,14 @@
         <div class="row">
             <div class="six columns node">
                 <h3>{{user.alias}}</h3>
-                <img src="static/awards/img/avatar{{user.avatar}}.png">
+                <img src="/static/awards/img/avatar{{user.avatar}}.png"><br>
+                <h4><a href="/">Logout</a></h4>
             </div>
             <div class="six columns node">
                 <h3>User Award icons</h3>
                     {% for award in awards %}
                     <div class="award">
-                        <img src="static/awards/img/{{award.picture_id}}.png">
+                        <img src="/static/awards/img/{{award.picture_id}}.png">
                         <h4>{{award.name}}</h4>
                     </div>
 
@@ -41,9 +42,9 @@
         <div class="row">
             <div class="11 columns node">
                 <h3>Bio/stats</h3>
-                <p>Real Name: {{user.name}}
-                <p>Position: {{user.position}}</p>
-                <p>Bio:{{user.bio}}</p> 
+                <p><strong>Real Name:</strong> {{user.name}}
+                <p><strong>Position:</strong> {{user.position}}</p>
+                <p><strong>About Me:</strong></p></strong><p>{{user.bio}}</p> 
             </div>
         </div>
 
@@ -53,7 +54,7 @@
                 {% for person in org %}
                     <a href="/profile/{{person.id}}">
                     <div class="person">
-                        <img src="static/awards/img/{{person.avatar}}.png">
+                        <img src="/static/awards/img/avatar{{person.avatar}}.png">
                         <h4>{{person.alias}}</h4>
 
                     </div>

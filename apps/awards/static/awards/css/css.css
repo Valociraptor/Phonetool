@@ -1,21 +1,51 @@
+body {
+    background-color: black;
+}
+
 #header{
-    color: rgb(72, 56, 218);
     border: 1px solid black;
     text-align: center;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 .container{
-    background-color: rgb(59, 59, 59);
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c9b5c0+0,95838f+36,3c2837+100 */
+    background: #c9b5c0; /* Old browsers */
+    background: -moz-linear-gradient(top, #c9b5c0 0%, #95838f 36%, #3c2837 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #c9b5c0 0%,#95838f 36%,#3c2837 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #c9b5c0 0%,#95838f 36%,#3c2837 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9b5c0', endColorstr='#3c2837',GradientType=0 ); /* IE6-9 */
+    
 }
 
 .node{
-    color: grey;
+    /* color: grey; */
     border: 1px solid black;
     text-align: center;
+    
 }
+
+.node img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.node h3{
+    text-shadow: 1px 2px 2px #000000;
+}
+
+
 
 .award img{
     width: 100px;
+    border: 2px solid black;
+    border-radius: 3px;
+    
+}
+
+
+.awardy{
+    width: 30%;
 }
 
 .awardy img{
@@ -50,16 +80,20 @@
 .magic1{
     background-image: url("http://zooschool12.wikispaces.com/file/view/animated_rabbit.gif/270025744/animated_rabbit.gif");
     background-repeat: repeat;
-    color: rgb(235, 117, 176);
+    color: rgb(235, 117, 176) !important;
 }
 
 .magic3{
-    background-color: rgb(153, 102, 63);
-    color: tan;
+    background-color: rgb(153, 102, 63) !important;
+    color: tan !important;
     font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .magic6{
-    color: greenyellow;
-    background-color: rgb(49, 160, 49);
+    color: rgb(236, 252, 14) !important; 
+    background-color: rgb(123, 238, 94) !important;
+}
+
+.row{
+    margin: 0px auto;
 }
