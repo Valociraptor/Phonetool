@@ -12,11 +12,11 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
 
 class UserManager(models.Manager):
     def validate(self, POST):
+        print "111111111"
         errors = []
-
-
         try:
             new_user = User.objects.get(email = POST['email'])
+            print "222222222"
         except:
         
             if len(POST['name']) < 2:
@@ -31,17 +31,17 @@ class UserManager(models.Manager):
                 errors.append("Passwords need to match bruh")
             if len(errors) > 0:
                 return (False, errors)
-
-            else:
-                
+            else:               
                 new_user = User.objects.create(
                     name = POST['name'],
                     alias = POST['alias'],
                     email = POST['email'],
+                    bio = POST['bio'],
+                    position = POST['position'],
+                    avatar = POST['avatar'],
                     password =  bcrypt.hashpw(POST['password'].encode(), bcrypt.gensalt())
                 )
-
-                
+                print "33333333333333"
                 return (True, new_user)
 
         errors.append("This user already exists!")
@@ -70,6 +70,7 @@ class User(models.Model):
     alias = models.CharField(max_length=255)
     bio = models.CharField(max_length=255)
     position = models.CharField(max_length=255)
+    avatar = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -80,18 +81,25 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
+class AwardManager(models.Manager):
+    
+    def addaward(self, POST):
+        this_user = User.objects.get(id=POST['user_id'])
+        award = Award.objects.get(id=POST['award_id'])
+        this_user.has_award.add(award)
+
 
 class Award(models.Model):
     name = models.CharField(max_length=255)
     desc = models.CharField(max_length=255)
     magicability = models.CharField(max_length=255)
+    picture_id = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     awarded_to = models.ManyToManyField(User, related_name="has_award")
 
+    objects = AwardManager()
+    
+    def __str__(self):
+        return self.name
 
-class AwardManager(models.Manager):
-        # this_user = User.objects.get(id=POST['id'])
-        # award = Award.objects.get(id=POST['qid'])
-
-        # this_user.has_award.add(award)

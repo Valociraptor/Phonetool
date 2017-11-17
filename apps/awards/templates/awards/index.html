@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Phone Tool</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'awards/css/skeleton.css' %}" media="screen" title="no title"  charset="utf-8">
+    <style>
+    body{
+        background-image: url("/static/awards/img/seattle_blur.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    #login_wrapper{
+        background-color: white;
+        opacity: 0.4;
+        border-radius: 10px;
+        padding: 10%;
+        margin-top: 15%;
+        width: 50%;
+    }
+    #email{
+        color:white;
+        opacity: 0.8
+    }
+    a{
+        font-size: 16pt;
+        font-weight: bold;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    h1{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    </style>
+</head>
+<body>
+<div class="container">    
+    <div id="login_wrapper" class="row">
+        <div class="six columns">
+            <form action="login/" method="post">
+                {% csrf_token %}
+                <h1>LOG IN</h1>
+                <p>Email: <input type="email" id="email" name="email"></p>
+                <p>Password: <input type="text" name="password"></p>
+                <div class="messages">
+                    <p id="message">{{ message }}</p>
+                </div>            
+                <input type="submit" id="login" value="Login">
+            </form><br>
+            {% if messages %}
+                {% for message in messages %}
+                    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            <a href="registration/">Don't have an account?</a> 
+        </div>
+    </div>
+</div>    
+</body>
+</html>

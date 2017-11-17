@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <img src="">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'awards/css/normalize.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'awards/css/skeleton.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'awards/css/css.css' %}" media="screen" title="no title"  charset="utf-8">
+
+    <title>All the Awards for Everybody, just sign up!</title>
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="twelve columns node">
+                <h2>Look at these sweet awards you can avail yourself of</h2>
+                {% for x in awards %}
+                    <div class="awardy">
+                        <img src="/static/awards/img/{{x.picture_id}}.png">
+                        <h3>{{x.name}}</h3>
+                        <p>{{x.desc}}</p>
+                        <form action="/requestaward" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="award_id" value="{{x.id}}">
+                            <input type="hidden" name="user_id" value="{{request.session.id}}">
+                            <input type="submit" value="request your FACE">
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>    
+        </div>
+    </div>
+</body>
+
+
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PROFILE</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'awards/css/normalize.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'awards/css/skeleton.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'awards/css/css.css' %}" media="screen" title="no title"  charset="utf-8">
+    
+</head>
+<body class="{{request.session.magic3}}">
+    <div class="container {{request.session.magic1}} {{request.session.magic6}}">
+        <div class="row">
+            <div id="header" class="twelve columns">
+                <h2>Phone Time Fun Tool Happy Award Explosion Achievement Recognition Party Wall!</h2>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="six columns node">
+                <h3>{{user.alias}}</h3>
+                <img src="static/awards/img/avatar{{user.avatar}}.png">
+            </div>
+            <div class="six columns node">
+                <h3>User Award icons</h3>
+                    {% for award in awards %}
+                    <div class="award">
+                        <img src="static/awards/img/{{award.picture_id}}.png">
+                        <h4>{{award.name}}</h4>
+                    </div>
+
+                    {% endfor %}
+                <a href="/awards/"><h4>Get you smore wards!</h4></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="11 columns node">
+                <h3>Bio/stats</h3>
+                <p>Real Name: {{user.name}}
+                <p>Position: {{user.position}}</p>
+                <p>Bio:{{user.bio}}</p> 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="9 columns node">
+                <h3>Org Chart</h3>
+                {% for person in org %}
+                    <a href="/profile/{{person.id}}">
+                    <div class="person">
+                        <img src="static/awards/img/{{person.avatar}}.png">
+                        <h4>{{person.alias}}</h4>
+
+                    </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

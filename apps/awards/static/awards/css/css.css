@@ -1,0 +1,65 @@
+#header{
+    color: rgb(72, 56, 218);
+    border: 1px solid black;
+    text-align: center;
+}
+
+.container{
+    background-color: rgb(59, 59, 59);
+}
+
+.node{
+    color: grey;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.award img{
+    width: 100px;
+}
+
+.awardy img{
+    height: 200px;
+}
+
+.awardy{
+    border: 1px solid black;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 5px;
+    margin: 10px 10px 0px 0px;
+}
+
+.person img{
+    width: 75px;
+    
+}
+
+.person{
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+.default{
+
+}
+
+
+.magic1{
+    background-image: url("http://zooschool12.wikispaces.com/file/view/animated_rabbit.gif/270025744/animated_rabbit.gif");
+    background-repeat: repeat;
+    color: rgb(235, 117, 176);
+}
+
+.magic3{
+    background-color: rgb(153, 102, 63);
+    color: tan;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.magic6{
+    color: greenyellow;
+    background-color: rgb(49, 160, 49);
+}

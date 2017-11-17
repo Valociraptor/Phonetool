@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^register', views.register),
     url(r'^login', views.login),
     url(r'^requestaward', views.requestaward),
+    url(r'^registration', views.registration),
 
 
 
